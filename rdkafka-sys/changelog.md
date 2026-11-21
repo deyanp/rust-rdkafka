@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.11.0+2.15.1 (our fork, 2026-11-21)
+* Bundle librdkafka v2.15.1 instead of v2.16.0. In v2.16.0 a client whose
+  brokers are all down starts a new bootstrap several times a second: a
+  re-bootstrap adds new brokers, and a new broker has no reconnect backoff
+  (librdkafka issue 5665, open). v2.15.1 has the same C API: the generated
+  bindings differ only in `RD_KAFKA_VERSION`.
+
 ## v4.11.0+2.16.0 (2026-11-21)
 * Bump librdkafka to v2.16.0 ([#865]).
 * Add the `RDKafkaErrorCode` variants that librdkafka added since v2.12.1:
